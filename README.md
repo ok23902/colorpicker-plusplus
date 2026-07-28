@@ -106,3 +106,8 @@ The application uses native Win32 APIs for:
 * Per-monitor DPI awareness
 
 This keeps the application small and lightweight.
+
+## License
+
+ColorPicker++ is licensed under the MIT License.
+See [LICENSE](LICENSE) for details.
