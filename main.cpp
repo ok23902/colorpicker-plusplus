@@ -8,6 +8,8 @@
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "gdi32.lib")
 
+#include "resource.h"
+
 // ------------------------------------------------------------
 // Configuration
 // ------------------------------------------------------------
@@ -366,21 +368,49 @@ static bool EnsurePreviewClassRegistered()
     if (g_previewClassRegistered)
         return true;
 
-    const wchar_t CLASS_NAME[] = L"MinimalColorPickerPreview";
+    const wchar_t CLASS_NAME[] =
+        L"MinimalColorPickerPreview";
 
-    WNDCLASSW wc{};
-    wc.lpfnWndProc = PreviewWndProc;
-    wc.hInstance = GetModuleHandleW(nullptr);
-    wc.hCursor = LoadCursorW(nullptr, IDC_ARROW);
-    wc.lpszClassName = CLASS_NAME;
+    WNDCLASSEXW wc{};
 
-    if (!RegisterClassW(&wc))
+    wc.cbSize =
+        sizeof(WNDCLASSEXW);
+
+    wc.lpfnWndProc =
+        PreviewWndProc;
+
+    wc.hInstance =
+        GetModuleHandleW(nullptr);
+
+    wc.hIcon =
+        LoadIconW(
+            GetModuleHandleW(nullptr),
+            MAKEINTRESOURCEW(IDI_APP_ICON)
+        );
+
+    wc.hIconSm =
+        LoadIconW(
+            GetModuleHandleW(nullptr),
+            MAKEINTRESOURCEW(IDI_APP_ICON)
+        );
+
+    wc.hCursor =
+        LoadCursorW(
+            nullptr,
+            IDC_ARROW
+        );
+
+    wc.lpszClassName =
+        CLASS_NAME;
+
+    if (!RegisterClassExW(&wc))
     {
         if (GetLastError() != ERROR_CLASS_ALREADY_EXISTS)
             return false;
     }
 
     g_previewClassRegistered = true;
+
     return true;
 }
 
