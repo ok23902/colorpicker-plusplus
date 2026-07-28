@@ -83,10 +83,19 @@ x64\Release\
 
 ```text
 ColorPicker++/
-├── ColorPicker++.sln
+├── ColorPicker++.slnx
 ├── ColorPicker++.vcxproj
 ├── ColorPicker++.vcxproj.filters
-└── main.cpp
+├── main.cpp
+├── resource.h
+├── resource.rc
+├── assets/
+│   ├── ColorPicker++.ico
+│   └── ColorPicker++.svg
+├── README.md
+├── LICENSE
+├── THIRD_PARTY_LICENSES.md
+└── .gitignore
 ```
 
 Build output and Visual Studio-generated files are excluded through `.gitignore`.
