@@ -33,6 +33,7 @@ static POINT g_mousePos{};
 static COLORREF g_currentColor = RGB(0, 0, 0);
 static bool g_picking = false;
 static bool g_previewClassRegistered = false;
+static HANDLE g_mutex = nullptr;
 
 // ------------------------------------------------------------
 // Helpers
@@ -577,6 +578,39 @@ int WINAPI wWinMain(
     PWSTR,
     int)
 {
+    g_mutex = CreateMutexW(
+        nullptr,
+        TRUE,
+        L"ColorPickerPlusPlus_Instance"
+    );
+
+    if (!g_mutex)
+    {
+        MessageBoxW(
+            nullptr,
+            L"Failed to create application mutex.",
+            L"Color Picker",
+            MB_OK | MB_ICONERROR
+        );
+
+        return 1;
+    }
+
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+    {
+        MessageBoxW(
+            nullptr,
+            L"ColorPicker++ is already running.",
+            L"Color Picker",
+            MB_OK | MB_ICONINFORMATION
+        );
+
+        CloseHandle(g_mutex);
+        g_mutex = nullptr;
+
+        return 0;
+    }
+
     SetProcessDpiAwarenessContext(
         DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2
     );
@@ -621,5 +655,10 @@ int WINAPI wWinMain(
 
     StopPicker();
     UnregisterHotKey(nullptr, HOTKEY_ID);
+    if (g_mutex)
+    {
+        CloseHandle(g_mutex);
+        g_mutex = nullptr;
+    }
     return 0;
 }
