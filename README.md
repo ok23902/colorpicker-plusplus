@@ -111,3 +111,16 @@ This keeps the application small and lightweight.
 
 ColorPicker++ is licensed under the MIT License.
 See [LICENSE](LICENSE) for details.
+
+## Credits
+
+### Application Icon
+
+The application icon is based on:
+
+- Title: Color Picker Dropper Colour 2
+- Author: wishforge.games
+- License: CC Attribution License
+
+Source:
+https://www.svgrepo.com/svg/389754/color-picker-dropper-colour
