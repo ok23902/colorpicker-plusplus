@@ -20,6 +20,12 @@ Press a global hotkey to activate the picker, move the cursor over any pixel, an
 * Multi-monitor support
 * Per-monitor DPI awareness
 
+## Download
+
+Download the latest version from GitHub Releases:
+
+[Download ColorPicker++](https://github.com/ok23902/colorpicker-plusplus/releases/latest)
+
 ## Usage
 
 1. Launch `ColorPicker++.exe`.
