@@ -67,7 +67,7 @@ The copied clipboard value is:
 Open the solution in Visual Studio:
 
 ```text
-ColorPicker++.sln
+ColorPicker++.slnx
 ```
 
 Select:
